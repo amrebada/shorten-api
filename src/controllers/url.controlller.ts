@@ -2,7 +2,7 @@ import URL from "../database/entities/url.entity";
 import config from "../config";
 
 class URLController {
-  private generateShortURL(): string {
+  generateShortURL(): string {
     const alphanumericMask =
       "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     const shortURL = [];
@@ -16,7 +16,7 @@ class URLController {
     return shortURL.join("");
   }
 
-  private formateShortURL(shortURL: string): string {
+  formateShortURL(shortURL: string): string {
     return `https://${config.DOMAIN}/${shortURL}`;
   }
 
