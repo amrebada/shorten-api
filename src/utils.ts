@@ -2,7 +2,7 @@ import { ErrorType, ErrorCodes } from "./constants";
 import { Response, Request } from "express";
 
 export const apiResponse = async (
-  cb: (req?: Request, res?: Response) => any,
+  cb: (req: Request, res: Response) => any,
   req: Request,
   res: Response
 ) => {
