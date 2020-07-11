@@ -13,9 +13,7 @@
   "paths": {
     "/url": {
       "post": {
-        "tags": [
-          "url"
-        ],
+        "tags": ["url"],
         "summary": "generate and save new short url",
         "description": "Primary Bid Ltd",
         "parameters": [
@@ -43,14 +41,10 @@
         }
       },
       "get": {
-        "tags": [
-          "url"
-        ],
+        "tags": ["url"],
         "summary": "list all available urls ",
         "description": "list all available urls",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "parameters": [
           {
             "name": "limit",
@@ -123,9 +117,17 @@
           "type": "boolean"
         },
         "data": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/urlDoc"
+          "type": "object",
+          "properties": {
+            "count": {
+              "type": "number"
+            },
+            "urls": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/urlDoc"
+              }
+            }
           }
         },
         "error": {

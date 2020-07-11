@@ -21,10 +21,13 @@ class URLController {
   }
 
   async listURLs(limit: number, offset = 0) {
-    return (await URL.find().skip(offset).limit(limit).exec()).map((url) => {
-      url.shortURL = this.formateShortURL(url.shortURL);
-      return url;
-    });
+    return {
+      count: await URL.estimatedDocumentCount({}).exec(),
+      urls: (await URL.find().skip(offset).limit(limit).exec()).map((url) => {
+        url.shortURL = this.formateShortURL(url.shortURL);
+        return url;
+      }),
+    };
   }
 
   private async getUniqueShortURL(): Promise<string> {
