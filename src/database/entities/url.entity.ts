@@ -25,6 +25,7 @@ const URLSchema = new Schema({
 export interface IURL extends Document {
   fullURL: string;
   shortURL: string;
+  createdAt: Date;
 }
 
 export interface IURLModal extends Model<IURL> {}

@@ -3,15 +3,22 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import express, { Application } from "express";
-import config from "./config";
 import bodyParser from "body-parser";
 import swaggerUI from "swagger-ui-express";
+import cors from "cors";
 import routes from "./routes";
 import { apiResponse } from "./utils";
+import config from "./config";
 import database from "./database";
 const Documentation = require("../swagger.json");
 
 const app: Application = express();
+
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
 app.use(bodyParser.json({}));
 app.use(bodyParser.urlencoded({ extended: true }));

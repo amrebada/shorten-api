@@ -23,7 +23,13 @@ class URLController {
   async listURLs(limit: number, offset = 0) {
     return {
       count: await URL.estimatedDocumentCount({}).exec(),
-      urls: (await URL.find().skip(offset).limit(limit).exec()).map((url) => {
+      urls: (
+        await URL.find()
+          .sort({ createdAt: -1 })
+          .skip(offset)
+          .limit(limit)
+          .exec()
+      ).map((url) => {
         url.shortURL = this.formateShortURL(url.shortURL);
         return url;
       }),
